@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% block content %}                                            
+ {% if documents %}
+            <ul>
+                {% for document in documents %}
+                xxx
+                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No documents.</p>
+        {% endif %}
+{% endblock %}
+
+
+
+

@@ -22,8 +22,24 @@ https://github.com/axelpale/minimal-django-file-upload-example
     pip freeze
     pip install --upgrade pip
     pip install django
+
+# active virtual envrionment
+
+    source /home/ubuntu/workspace/myvenv/bin/activate
+
+    
+    
+## DB
+
+    ./manage.py makemigrations
+    ./manage.py migrate
+    
+    
+    
 ## project
     cd /home/ubuntu/workspace/hiring001/myproject
+    
+    ./manage.py createsuperuser
     
     ./manage.py runserver $IP:$PORT
 

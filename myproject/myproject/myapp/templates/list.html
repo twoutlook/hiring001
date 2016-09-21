@@ -1,36 +1,52 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Minimal Django File Upload Example</title>
-    </head>
+<html lang="en">
 
-    <body>
-        <!-- List of uploaded documents -->
-        {% if documents %}
-            <ul>
-                {% for document in documents %}
-                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No documents.</p>
-        {% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HR</title>
+ <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}" /></head>
 
-        <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>{{ form.non_field_errors }}</p>
+<body>
+    <!-- List of uploaded documents -->
+   
+          當前用戶: {{ current_user }} &nbsp;<a href="/admin">登入|登出|維護資料</a>
+  
+    {% if documents %}
+ 
+    <h1>人員列表</h1>
+    <table class="table">
+         <tr>
+            <th>編號</th>
+            <th>姓名</th>
+            <th>應徵職務</th>
+            <th>狀態</th>
+            <th>備註</th>
+            <th>簡歷</th>
+            
+            </td>
+        {% for document in documents %}
+        <tr>
+            <td>{{document.f01}}</td>
+            <td>{{document.f02}}</td>
+            <td>{{document.f03}}</td>
+            <td>{{document.f04}}</td>
+            <td>{{document.f05}}</td>
+            <td> <a target='_blank' href="{{ document.docfile.url }}">PDF</a></td>
 
-            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+        </tr>
 
-            <p>
-                {{ form.docfile.errors }}
-                {{ form.docfile }}
-            </p>
+        {% endfor %}
 
-            <p><input type="submit" value="Upload"/></p>
-        </form>
-    </body>
+
+    </table>
+    {% else %}
+    <p>No documents.</p>
+    {% endif %}
+
+</body>
 
 </html>
